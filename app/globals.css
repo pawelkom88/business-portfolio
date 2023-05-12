@@ -2,26 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "WILDWORLD";
+  src: local("WILDWORLD"), url("/assets/fonts/WILDWORLD.woff2");
+  unicode-range: U+000-5FF;
+  /* src: url("/assets/fonts/steelfish_bd.ttf"); */
+  /* font-weight: 400; */
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
+:root {
+  --background-clr: #101404;
+  --primary-clr: #dbfe52;
+  --secondary-clr: #9353ff;
+  --text-light: #ffffff;
+  --text-dark: #101404;
+  --tw-gradient-stops: "from-indigo-300 via-red-300 to-yellow-200";
+}
+
+/* @media (prefers-color-scheme: light) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-clr: #fff;
+    --text-light: #101404;
+    --text-dark: #fff;
+  }
+} */
+
+body {
+  background-color: var(--background-clr);
+  color: var(--text-light);
+  font-family: var(--font-cabin), sans-serif;
+}
+
+.background-animate {
+  background-size: 200%;
+  -webkit-animation: AnimateBackgroud 5s ease infinite;
+  -moz-animation: AnimateBackgroud 5s ease infinite;
+  animation: AnimateBackgroud 5s ease infinite;
+}
+
+@keyframes AnimateBackgroud {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in forwards;
 }
